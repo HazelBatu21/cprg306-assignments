@@ -1,12 +1,11 @@
 import React from 'react';
+import Link from 'next/link';
 
 const StudentInfo = () => {
     return (
       <div>
-        <h1>Hazel Batu</h1>
-        <nav>
-            <Link href= "https://github.com/HazelBatu21">https://github.com/HazelBatu21</Link>
-        </nav>
+        <h2>Hazel Batu</h2>
+        <Link href= "https://github.com/">https://github.com/</Link>
       </div>
     );
   };
