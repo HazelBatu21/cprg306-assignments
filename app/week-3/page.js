@@ -6,5 +6,5 @@ export default function Page () {
             <h1 className = "text-2xl front-bold mb-4">Shopping List</h1>
             <ItemList/>
         </main>
-    )
+    );
 }
