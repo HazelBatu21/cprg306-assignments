@@ -18,7 +18,7 @@ export default function NewItem() {
     };
   
     return (
-      <form onSubmit={handleSubmit} className="bg-white p-6 rounded-md shadow-md">
+      <form onSubmit={handleSubmit} className="bg-white p-6 max-w-lg rounded-md shadow-md">
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" htmlFor="name">
             Name
@@ -29,7 +29,7 @@ export default function NewItem() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-gray-300 rounded text-black"
           />
         </div>
   
@@ -45,7 +45,7 @@ export default function NewItem() {
             value={quantity}
             onChange={(e) => setQuantity(Number(e.target.value))}
             required
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-gray-300 rounded text-black"
           />
         </div>
   
@@ -57,7 +57,7 @@ export default function NewItem() {
             id="category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded"
+            className="w-full p-2 border border-gray-300 rounded text-black"
           >
             <option value="produce">Produce</option>
             <option value="dairy">Dairy</option>
