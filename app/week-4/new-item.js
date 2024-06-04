@@ -21,7 +21,7 @@ export default function NewItem() {
       <form onSubmit={handleSubmit} className="bg-white p-6 max-w-lg rounded-md shadow-md">
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" htmlFor="name">
-            Name
+            Item Name
           </label>
           <input
             id="name"
