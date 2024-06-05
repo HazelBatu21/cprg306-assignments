@@ -18,9 +18,9 @@ export default function NewItem() {
     };
   
     return (
-      <form onSubmit={handleSubmit} className="bg-white p-6 max-w-lg rounded-md shadow-md">
+      <form onSubmit={handleSubmit} className="bg-gray-300 p-6 max-w-sm w-full rounded-md shadow-md">
         <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2" htmlFor="name">
+          <label className="block text-gray-700 text-lg font-bold mb-2" htmlFor="name">
             Item Name
           </label>
           <input
@@ -29,12 +29,12 @@ export default function NewItem() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            className="w-full p-2 border border-gray-300 rounded text-black"
+            className="w-full p-2 border border-gray-300 text-lg rounded text-black"
           />
         </div>
   
         <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2" htmlFor="quantity">
+          <label className="block text-gray-700 text-lg font-bold mb-2" htmlFor="quantity">
             Quantity
           </label>
           <input
@@ -50,7 +50,7 @@ export default function NewItem() {
         </div>
   
         <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2" htmlFor="category">
+          <label className="block text-gray-700 text-lg font-bold mb-2" htmlFor="category">
             Category
           </label>
           <select
@@ -75,7 +75,7 @@ export default function NewItem() {
   
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700"
+          className="w-full bg-blue-500 text-white py-4 px-4 rounded hover:bg-blue-700"
         >
           Add Item
         </button>
