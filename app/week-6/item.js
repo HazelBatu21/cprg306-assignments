@@ -1,4 +1,4 @@
-
+//week-6/item.js
 
 export default function Item({ name, quantity, category }) {
     return (

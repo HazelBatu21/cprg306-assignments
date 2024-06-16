@@ -1,17 +1,18 @@
+//week-6/new-tems.js
 "user client";
 
 import { useState } from "react";
 
-export default function NewItem() {
+export default function NewItem({onAddItem}) {
     const [name, setName] = useState('');
     const [quantity, setQuantity] = useState(1);
     const [category, setCategory] = useState('produce');
   
     const handleSubmit = (event) => {
       event.preventDefault();
-      const item = { name, quantity, category };
-      console.log(item);
-      alert(`Added Item: ${name}\nQuantity: ${quantity}\nCategory: ${category}`);
+      const newItem = { id: Date.now().toString(), name, quantity, category };
+      onAddItem(newItem);
+      console.log(newItem);
       setName('');
       setQuantity(1);
       setCategory('produce');
