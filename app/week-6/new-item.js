@@ -19,7 +19,7 @@ export default function NewItem({ onAddItem }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-gray-300 p-6 max-w-sm w-full rounded-md shadow-md">
+    <form onSubmit={handleSubmit} className="bg-gray-300  mb-4 p-6 max-w-sm w-full rounded-md shadow-md">
       <div className="mb-4">
         <label className="block text-gray-700 text-lg font-bold mb-2" htmlFor="name">
           Item Name
