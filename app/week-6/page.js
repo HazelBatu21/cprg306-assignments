@@ -15,9 +15,9 @@ export default function Page() {
   
 
   return (
-    <main className="p-6 min-h-screen ">
+    <main className="p-6 min-h-screen bg-gray-400 flex justify-center ">
       <div className="max-w-3xl w-full">
-        <h1 className="text-4xl font-bold mb-6 text-center">Shopping List</h1>
+        <h1 className="text-4xl font-bold mb-4 text-center">Shopping List</h1>
         <NewItem onAddItem = {handleAddItem}/>
         <ItemList items = {items}/>
       </div>
