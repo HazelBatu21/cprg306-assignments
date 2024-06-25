@@ -1,4 +1,4 @@
-//week-6/new-tems.js
+//week-7/new-tems.js
 "use client";
 
 import { useState } from "react";

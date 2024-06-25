@@ -1,10 +1,10 @@
-//week-6/item-list.js
+//week-7/item-list.js
 "use client";
 
 import { useState } from "react";
 import Item from "./item";
 
-export default function ItemList({ items }) {
+export default function ItemList({ items, onItemSelect }) {
   const [sortBy, setSortBy] = useState("name");
 
   const sortedItems = [...items].sort((a, b) => {
@@ -21,18 +21,14 @@ export default function ItemList({ items }) {
       <div className="mb-4">
         <button
           onClick={() => setSortBy("name")}
-          className={`mr-2 px-4 py-2 rounded ${
-            sortBy === "name" ? "bg-blue-700 text-white" : "bg-gray-500"
-          }`}
-        >
+          className={`mr-2 px-4 py-2 rounded ${sortBy === "name" ? "bg-blue-700 text-white" : "bg-gray-500"}`}
+        >  
           Sort by Name
         </button>
         <button
           onClick={() => setSortBy("category")}
-          className={`px-4 py-2 rounded ${
-            sortBy === "category" ? "bg-blue-700 text-white" : "bg-gray-500"
-          }`}
-        >
+          className={`px-4 py-2 rounded ${sortBy === "category" ? "bg-blue-700 text-white" : "bg-gray-500"}`}
+        > 
           Sort by Category
         </button>
       </div>
@@ -43,6 +39,7 @@ export default function ItemList({ items }) {
             name={item.name}
             quantity={item.quantity}
             category={item.category}
+            onSelect={() => onItemSelect(item.name)}
           />
         ))}
       </ul>
