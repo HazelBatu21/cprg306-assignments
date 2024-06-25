@@ -10,16 +10,16 @@ export default function MealIdeas ({ingredient}) {
         return data.meals;
     };
 
-    const loadMealIdeas = async () => {
-        if (ingredient) {
-            const meals = await fetchMealIdeas (ingredient);
-            setMeals (meals || []);
-        }
-    };
-
-    useEffect (() => {
-        loadMealIdeas ();
-    }, [ingredient]);
+    useEffect(() => {
+        const loadMealIdeas = async () => {
+          if (ingredient) {
+            const meals = await fetchMealIdeas(ingredient);
+            setMeals(meals || []);
+          }
+        };
+    
+        loadMealIdeas();
+      }, [ingredient]);
 
     return (
         <div className="bg-gray-300 p-6 max-w-sm w-full rounded-md shadow-md">
