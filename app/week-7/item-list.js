@@ -18,7 +18,7 @@ export default function ItemList({ items, onItemSelect }) {
 
   return (
     <div>
-      <div className="mb-4">
+      <div className="flex justify-center mb-4">
         <button
           onClick={() => setSortBy("name")}
           className={`mr-2 px-4 py-2 rounded ${sortBy === "name" ? "bg-blue-700 text-white" : "bg-gray-500"}`}
