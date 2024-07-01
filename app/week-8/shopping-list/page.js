@@ -1,6 +1,9 @@
-//week-7/page.js
+//week-8/page.js
 "use client";
 
+import { useUserAuth } from "../_utils/auth-context";
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { useState } from "react";
 import NewItem from "./new-item";
 import ItemList from "./item-list"
@@ -8,15 +11,25 @@ import itemsData from "./items.json";
 import MealIdeas from "./meal-ideas";
 
 
-export default function Page() {
-  const [items, setItems] = useState(itemsData);
+export default function ShoppingListPage () {
+  const {user} = useUserAuth ();
+  const router = useRouter ();
+  cont [items,setItems] = useState (itemsData);
   const [selectedItemName, setSelectedItemName] = useState ("");
+
+  useEffect (() => {
+    if (!user) {
+      router.push ('/');
+    }
+  }, [user,router]);
+
+
   
   const handleAddItem = (newItem) => {
     setItems((prevItems) => [...prevItems, newItem]);
   };
   
-  // clean up item name: remove size and emojis
+ 
   const handleItemSelect = (itemName) => {
     const cleanedItemName = itemName
       .split(',')[0]
@@ -25,7 +38,7 @@ export default function Page() {
     setSelectedItemName(cleanedItemName);
   };
 
-  return (
+  return user? (
     <main className="p-6 min-h-screen bg-gray-400 flex justify-center">
       <div className="max-w-6xl w-full flex">
         <div className="w-2/3 pr-4">
@@ -38,5 +51,5 @@ export default function Page() {
         </div>
       </div>
     </main>
-  );
+  ) : null;
 }
