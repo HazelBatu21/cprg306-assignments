@@ -33,7 +33,7 @@ export default function ShoppingListPage() {
   return user ? (
     <main className="p-6 min-h-screen bg-gray-400 flex justify-center">
       <div className="max-w-6xl w-full flex">
-        <div className="w-1/3 pr-4">
+        <div className="w-2/3 pr-4">
           <h1 className="text-4xl font-bold mb-4 text-center">Shopping List</h1>
           <NewItem onAddItem={handleAddItem} />
           <ItemList items={items} onItemSelect={handleItemSelect} />
