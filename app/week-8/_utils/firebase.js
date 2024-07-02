@@ -16,7 +16,7 @@ const firebaseConfig = {
   storageBucket: "cprg306-assignments-8f5be.appspot.com",
   messagingSenderId: "996143966444",
   appId: "1:996143966444:web:c009ef02152f2aa7f11dc9",
-  measurementId: "G-4148CP9W4V"
+  measurementId: "G-4148CP9W4V" // optional, required for Firebase Analytics
 };
 
 // Initialize Firebase
