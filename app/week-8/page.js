@@ -37,9 +37,9 @@ export default function HomePage() {
                 Logout
             </button>
             <div className="mt-4">
-                <Link href="/shopping-list" className="bg-green-500 text-white px-4 py-2 rounded-md">
+                <a Link href="/shopping-list" className="bg-green-500 text-white px-4 py-2 rounded-md">
                     Go to Shopping List
-                </Link>
+                </a>
             </div>
         </div>
       )}
