@@ -2,8 +2,8 @@
 "use client";
 
 import { useUserAuth } from "../_utils/auth-context";
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import NewItem from "./new-item";
 import ItemList from "./item-list";
 import itemsData from "./items.json";
@@ -17,7 +17,7 @@ export default function ShoppingListPage() {
 
   useEffect(() => {
     if (!user) {
-      router.push('/');
+      router.push('/week-8');
     }
   }, [user, router]);
 
