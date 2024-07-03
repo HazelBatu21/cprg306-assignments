@@ -10,7 +10,7 @@ import itemsData from "./items.json";
 import MealIdeas from "./meal-ideas";
 
 export default function ShoppingListPage() {
-  const { user } = useUserAuth();
+  const { user, firebaseSignOut } = useUserAuth(); // Import firebaseSignOut
   const router = useRouter();
   const [items, setItems] = useState(itemsData);
   const [selectedItemName, setSelectedItemName] = useState("");
@@ -20,6 +20,11 @@ export default function ShoppingListPage() {
       router.push('/week-8');
     }
   }, [user, router]);
+
+  const handleSignOut = async () => {
+    await firebaseSignOut();
+    router.push('/week-8'); // Redirect to home page after logout
+  };
 
   const handleAddItem = (newItem) => {
     setItems((prevItems) => [...prevItems, newItem]);
@@ -32,14 +37,24 @@ export default function ShoppingListPage() {
 
   return user ? (
     <main className="p-6 min-h-screen bg-gray-400 flex justify-center">
-      <div className="max-w-6xl w-full flex">
-        <div className="w-2/3 pr-4">
+      <div className="max-w-6xl w-full flex flex-col items-center">
+        <div className="w-2/3  flex justify-between items-center mb-4">
           <h1 className="text-4xl font-bold mb-4 text-center">Shopping List</h1>
-          <NewItem onAddItem={handleAddItem} />
-          <ItemList items={items} onItemSelect={handleItemSelect} />
+          <button
+            onClick={handleSignOut}
+            className="bg-red-500 text-white font-bold text-l px-12 py-3 rounded-md ml-auto"
+          >
+            Logout
+          </button>
         </div>
-        <div className="w-2/3 pl-4">
-          {selectedItemName && <MealIdeas ingredient={selectedItemName} />}
+        <div className="w-full flex">
+          <div className="w-2/3 pr-4">
+            <NewItem onAddItem={handleAddItem} />
+            <ItemList items={items} onItemSelect={handleItemSelect} />
+          </div>
+          <div className="w-2/3 pl-4">
+            {selectedItemName && <MealIdeas ingredient={selectedItemName} />}
+          </div>
         </div>
       </div>
     </main>
