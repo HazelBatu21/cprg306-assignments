@@ -27,6 +27,9 @@ export default function Home() {
             <li className = "mb-1">
             <a Link href="/week-8"className = "text-2xl hover:text-blue-400 hover:underline">Week 8 Assignment</a>
             </li>
+            <li className = "mb-1">
+            <a Link href="/week-10"className = "text-2xl hover:text-blue-400 hover:underline">Week 10 Assignment</a>
+            </li>
           </ul>
       </div>
       
