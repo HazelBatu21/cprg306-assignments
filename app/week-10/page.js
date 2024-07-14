@@ -42,7 +42,7 @@ export default function HomePage() {
                     </div>
                 )}
                 <div>
-                    <Link href="/week-8/shopping-list" className="text-blue-500 hover:underline">
+                    <Link href="/week-10/shopping-list" className="text-blue-500 hover:underline">
                         Go to Shopping List
                     </Link>
                 </div>

@@ -6,26 +6,24 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import NewItem from "./new-item";
 import ItemList from "./item-list";
-import itemsData from "./items.json";
 import MealIdeas from "./meal-ideas";
-import {getItems, addItem} from "../_services/shopping-list-service";
+import {getItems, addItem, deleteItem} from "../_services/shopping-list-service";
 
 export default function ShoppingListPage() {
   const { user, firebaseSignOut } = useUserAuth(); // Import firebaseSignOut
   const router = useRouter();
-  const [items, setItems] = useState(itemsData);
+  const [items, setItems] = useState([]);
   const [selectedItemName, setSelectedItemName] = useState("");
-
-  const loadItems = async () => {
-    const items = await getItems(user.uid);
-    setItems(items);
-  };
 
   useEffect(() => {
     if (!user) {
       router.push('/week-10');
     } else {
-      loadItems();
+      const loadItems = async () => {
+        const fetchedItems = await getItems (user.uid);
+        setItems(fetchedItems);
+      };
+      loadItems ();
     }
   }, [user, router]);
 
@@ -36,12 +34,17 @@ export default function ShoppingListPage() {
 
   const handleAddItem = async(newItem) => {
     const itemId = await addItem(user.uid, newItem);
-    setItems((prevItems) => [...prevItems, {id:itemId, ...newItem}]);
+    setItems((prevItems) => [...prevItems, {id: itemId, ...newItem}]);
   };
 
   const handleItemSelect = (itemName) => {
     const cleanedItemName = itemName.split(",")[0].trim().replace(/([\u2700-\u27BF]|[\uE000-\uF8FF]|[\u2011-\u26FF])/g, "");
     setSelectedItemName(cleanedItemName);
+  };
+
+  const handleDeleteItem = async (itemId) => {
+    await deleteItem(user.uid, itemId);
+    setItems ((prevItems) => prevItems.filter(item => item.id !== itemId));
   };
 
   return user ? (
@@ -58,11 +61,12 @@ export default function ShoppingListPage() {
         </div>
         <div className="w-full flex">
           <div className="w-2/3 pr-4">
+          
             <NewItem onAddItem={handleAddItem} />
             <ItemList items={items} onItemSelect={handleItemSelect} />
           </div>
           <div className="w-2/3 pl-4">
-            {selectedItemName && <MealIdeas ingredient={selectedItemName} />}
+            {selectedItemName && <MealIdeas ingredient={selectedItemName} onDeleteItem={handleDeleteItem}/>}
           </div>
         </div>
       </div>
