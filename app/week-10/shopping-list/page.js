@@ -16,17 +16,22 @@ export default function ShoppingListPage() {
   const [items, setItems] = useState(itemsData);
   const [selectedItemName, setSelectedItemName] = useState("");
 
+  const loadItems = async () => {
+    const items = await getItems(user.uid);
+    setItems(items);
+  };
+
   useEffect(() => {
     if (!user) {
       router.push('/week-10');
     } else {
-      loadItems ();
+      loadItems();
     }
   }, [user, router]);
 
   const handleSignOut = async () => {
     await firebaseSignOut();
-    router.push('/week-8'); // Redirect to home page after logout
+    router.push('/week-10'); // Redirect to home page after logout
   };
 
   const handleAddItem = async(newItem) => {
