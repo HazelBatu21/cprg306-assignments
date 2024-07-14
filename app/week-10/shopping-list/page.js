@@ -1,4 +1,4 @@
-//C:\cprg306-projects\cprg306-assignments\app\week-8\shopping-list\page.js
+//C:\cprg306-projects\cprg306-assignments\app\week-10\shopping-list\page.js
 "use client";
 
 import { useUserAuth } from "../_utils/auth-context";
@@ -8,6 +8,7 @@ import NewItem from "./new-item";
 import ItemList from "./item-list";
 import itemsData from "./items.json";
 import MealIdeas from "./meal-ideas";
+import {getItems, addItem} from "../_services/shopping-list-service";
 
 export default function ShoppingListPage() {
   const { user, firebaseSignOut } = useUserAuth(); // Import firebaseSignOut
@@ -17,7 +18,9 @@ export default function ShoppingListPage() {
 
   useEffect(() => {
     if (!user) {
-      router.push('/week-8');
+      router.push('/week-10');
+    } else {
+      loadItems ();
     }
   }, [user, router]);
 
@@ -26,8 +29,9 @@ export default function ShoppingListPage() {
     router.push('/week-8'); // Redirect to home page after logout
   };
 
-  const handleAddItem = (newItem) => {
-    setItems((prevItems) => [...prevItems, newItem]);
+  const handleAddItem = async(newItem) => {
+    const itemId = await addItem(user.uid, newItem);
+    setItems((prevItems) => [...prevItems, {id:itemId, ...newItem}]);
   };
 
   const handleItemSelect = (itemName) => {

@@ -1,4 +1,4 @@
-// app/week-8/page.js
+// app/week-10/page.js
 "use client";
 
 import { useUserAuth } from "./_utils/auth-context";
@@ -12,7 +12,7 @@ export default function HomePage() {
 
     const handleSignIn = async () => {
         await gitHubSignIn();
-        router.push('/week-8/shopping-list'); // Navigate to shopping list after sign in
+        router.push('/week-10/shopping-list'); // Navigate to shopping list after sign in
     };
 
     const handleSignOut = async () => {
@@ -22,7 +22,7 @@ export default function HomePage() {
     return (
         <div className="min-h-screen bg-gray-200 flex justify-center items-center">
             <div className="w-200 h-60 bg-white shadow-lg rounded-lg p-6 text-center">
-                <h1 className="text-3xl font-bold mb-10">Welcome to Shopping List</h1>
+                <h1 className="text-3xl font-bold mb-10">Welcome to Shopping List!</h1>
                 {!user ? (
                     <button
                         onClick={handleSignIn}

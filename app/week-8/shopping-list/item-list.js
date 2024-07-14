@@ -1,4 +1,4 @@
-//week-7/item-list.js
+//week-8/item-list.js
 "use client";
 
 import { useState } from "react";
