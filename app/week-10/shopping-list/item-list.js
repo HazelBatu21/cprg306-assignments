@@ -22,13 +22,13 @@ export default function ItemList({ items, onItemSelect, onDeleteItem }) {
         <button
           onClick={() => setSortBy("name")}
           className={`mr-2 px-4 py-2 rounded ${sortBy === "name" ? "bg-blue-700 text-white" : "bg-gray-500"}`}
-        >  
+        >
           Sort by Name
         </button>
         <button
           onClick={() => setSortBy("category")}
           className={`px-4 py-2 rounded ${sortBy === "category" ? "bg-blue-700 text-white" : "bg-gray-500"}`}
-        > 
+        >
           Sort by Category
         </button>
       </div>
@@ -41,7 +41,7 @@ export default function ItemList({ items, onItemSelect, onDeleteItem }) {
             quantity={item.quantity}
             category={item.category}
             onSelect={onItemSelect}
-            onDelete={onDeleteItem}
+            onDelete={onDeleteItem} 
           />
         ))}
       </ul>

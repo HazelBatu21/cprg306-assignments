@@ -63,10 +63,10 @@ export default function ShoppingListPage() {
           <div className="w-2/3 pr-4">
           
             <NewItem onAddItem={handleAddItem} />
-            <ItemList items={items} onItemSelect={handleItemSelect} />
+            <ItemList items={items} onItemSelect={handleItemSelect} onDeleteItem={handleDeleteItem} />
           </div>
           <div className="w-2/3 pl-4">
-            {selectedItemName && <MealIdeas ingredient={selectedItemName} onDeleteItem={handleDeleteItem}/>}
+            {selectedItemName && <MealIdeas ingredient={selectedItemName}/>}
           </div>
         </div>
       </div>
